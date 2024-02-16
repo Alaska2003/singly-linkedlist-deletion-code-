@@ -1,0 +1,53 @@
+void deleteNode(int position ,Node* &head){
+    
+    if(position==1){
+        Node* temp= head;
+        head=head->next;
+        temp->next=NULL;
+        delete temp;
+}
+else{
+    Node* curr=head;
+    Node*prev=NULL;
+    int cnt=1;
+    while(cnt<position){
+        prev=curr;
+        curr=curr->next;
+        cnt++;
+    }
+    prev->next=curr->next;
+    curr->next=NULL;
+    delete curr;
+}
+
+}
+int main() {
+    Node* node1 = new Node(10);
+    Node *head = node1;
+    Node *tail = node1; // Initialize tail
+    
+    print(head);
+    
+    Insertathead(head, 12);
+    print(head);
+    
+    Insertathead(head, 15);
+    print(head);
+    
+    Insertattail(tail, 16);
+    print(head);
+    
+    InsertAtposition(head, 4, 22);
+    print(head);
+    
+    std::cout << "head: " << head->data << std::endl;
+    std::cout << "tail: " << tail->data << std::endl;
+   
+   deleteNode(4, head); // Deletes the node at position 4
+print(head);
+
+
+    
+
+    return 0;
+}
